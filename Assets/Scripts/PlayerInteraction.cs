@@ -16,9 +16,7 @@ public class PlayerInteraction : MonoBehaviour
     
             if (interactable != null && interactable.isInteractable)
             {
-                // We pass the text AND the position of the object we hit
                 UIManager.Instance.ShowHoverText(interactable.InteractionText, interactable.LabelAnchor.position);
-
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     interactable.Interact();
