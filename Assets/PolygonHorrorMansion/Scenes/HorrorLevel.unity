@@ -13101,6 +13101,7 @@ MonoBehaviour:
   findMagicianQuest: {fileID: 11400000, guid: e0393dff04f92bd42814acdec7987c87, type: 2}
   findLibraryQuest: {fileID: 11400000, guid: 5b294528e9013104283f4b52dc959702, type: 2}
   bottleQuest: {fileID: 11400000, guid: c301758a1c2e80945a8faa6672897fe6, type: 2}
+  libraryKeyCollectibleId: horr_key2
 --- !u!4 &106654062 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4307780730024298, guid: 62932fb57e1adde41b35493d4720f61b, type: 3}
@@ -59976,6 +59977,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1198627828169344, guid: 0838ddbe2ed21574ba74e82691437169, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1159515786}
+    - targetCorrespondingSourceObject: {fileID: 1198627828169344, guid: 0838ddbe2ed21574ba74e82691437169, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1159515791}
   m_SourcePrefab: {fileID: 100100000, guid: 0838ddbe2ed21574ba74e82691437169, type: 3}
 --- !u!1001 &446419658
 PrefabInstance:
@@ -91029,7 +91033,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dragonQuest: {fileID: 0}
-  targetScene: Demo
+  targetScene: KingdomLevel
+  nextLevel: 4
   teleportSound: {fileID: 8300000, guid: 610fdbe528943fe4e9c7f49666d2699c, type: 3}
   _lockedText: Kill the Dragon First
   _unlockedText: Press E to Enter Portal
@@ -156881,6 +156886,20 @@ MonoBehaviour:
   openAngle: 90
   openSpeed: 2
   findPortalQuest: {fileID: 11400000, guid: bd1cba5669bdc4c4bb5d889e8e8bdb85, type: 2}
+--- !u!114 &1159515791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159515777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0738b82d62182b2408177cb1a032cb54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorId: horrrcellDoor
+  isOpened: 0
 --- !u!1001 &1160496148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -158149,7 +158168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef00cc2490af6264ca423c8ef3203a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMode: 1
+  startMode: 0
 --- !u!1001 &1169582754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -241718,6 +241737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetScene: KingdomLevel
+  nextLevel: 3
   teleportSound: {fileID: 8300000, guid: 610fdbe528943fe4e9c7f49666d2699c, type: 3}
   peterPortalClip: {fileID: 0}
   _interactionText: Press E to Enter Portal
@@ -249151,6 +249171,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8706726633746435540, guid: acc17d7816a3d6e42841147fa755f55b, type: 3}
+      propertyPath: hudCanvas
+      value: 
+      objectReference: {fileID: 1676025438}
+    - target: {fileID: 8706726633746435540, guid: acc17d7816a3d6e42841147fa755f55b, type: 3}
+      propertyPath: inventoryCanvas
+      value: 
+      objectReference: {fileID: 320583794}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -292897,6 +292925,103 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f61c34f6e32c0834fab59563b8d7b368, type: 3}
+--- !u!1001 &3755561374670666734
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6365236252213657354, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164882739614820200, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
+      propertyPath: m_Name
+      value: LoadingScreenCanvas
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 422c1e8ea6ec6ed44870e4e1c13f4939, type: 3}
 --- !u!1001 &5117279334814763622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -293128,3 +293253,4 @@ SceneRoots:
   - {fileID: 1861440085}
   - {fileID: 1135165155}
   - {fileID: 1580478541}
+  - {fileID: 3755561374670666734}
