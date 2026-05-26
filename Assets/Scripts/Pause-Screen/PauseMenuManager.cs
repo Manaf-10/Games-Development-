@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 public class PauseMenuManager : MonoBehaviour
 {
     public static bool isPaused = false;
-    private const int PauseCanvasSortingOrder = 10000;
 
     [Header("Main Panels")]
     public GameObject pauseMenuPanel;
@@ -26,14 +25,9 @@ public class PauseMenuManager : MonoBehaviour
     [Tooltip("Drag the Ammo display panel here.")]
     public GameObject ammoPanel;
 
-    private Canvas pauseCanvas;
-    private bool originalOverrideSorting;
-    private int originalSortingOrder;
-
     void Start()
     {
         EnsureEventSystemExists();
-        CachePauseCanvasSorting();
 
         HideAllPanels();
 
@@ -100,7 +94,6 @@ public class PauseMenuManager : MonoBehaviour
         isPaused = false;
 
         HideAllPanels();
-        RestorePauseCanvasSorting();
 
         if (hudCanvas != null) hudCanvas.SetActive(true);
         if (inventoryCanvas != null) inventoryCanvas.SetActive(true);
@@ -124,7 +117,6 @@ public class PauseMenuManager : MonoBehaviour
         if (questPanel != null) questPanel.SetActive(false);
         if (ammoPanel != null) ammoPanel.SetActive(false);
 
-        BringPauseCanvasToFront();
         OpenPausePanel();
 
         Cursor.lockState = CursorLockMode.None;
@@ -151,8 +143,7 @@ public class PauseMenuManager : MonoBehaviour
     public void ExitToMain()
     {
         Time.timeScale = 1f;
-        isPaused = false;
-        SceneManager.LoadScene(mainMenuScene);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(mainMenuScene);
     }
 
     // Opens the confirm window
@@ -171,8 +162,6 @@ public class PauseMenuManager : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("Quitting game...");
-        Time.timeScale = 1f;
-        isPaused = false;
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -187,35 +176,6 @@ public class PauseMenuManager : MonoBehaviour
         {
             panel.SetActive(active);
         }
-    }
-
-    private void CachePauseCanvasSorting()
-    {
-        pauseCanvas = GetComponent<Canvas>();
-
-        if (pauseCanvas == null)
-            return;
-
-        originalOverrideSorting = pauseCanvas.overrideSorting;
-        originalSortingOrder = pauseCanvas.sortingOrder;
-    }
-
-    private void BringPauseCanvasToFront()
-    {
-        if (pauseCanvas == null)
-            return;
-
-        pauseCanvas.overrideSorting = true;
-        pauseCanvas.sortingOrder = PauseCanvasSortingOrder;
-    }
-
-    private void RestorePauseCanvasSorting()
-    {
-        if (pauseCanvas == null)
-            return;
-
-        pauseCanvas.overrideSorting = originalOverrideSorting;
-        pauseCanvas.sortingOrder = originalSortingOrder;
     }
 
     private void EnsureEventSystemExists()

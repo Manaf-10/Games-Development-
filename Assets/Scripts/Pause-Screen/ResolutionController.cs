@@ -8,21 +8,10 @@ public class ResolutionController : MonoBehaviour
 
     void Start()
     {
-        if (resolutionDropdown == null)
-        {
-            Debug.LogWarning("ResolutionController is missing an AdvancedDropdown reference.", this);
-            enabled = false;
-            return;
-        }
-
+        // 1. Get all resolutions from the system
         resolutions = Screen.resolutions;
-        if (resolutions == null || resolutions.Length == 0)
-        {
-            Debug.LogWarning("No screen resolutions found for ResolutionController.", this);
-            enabled = false;
-            return;
-        }
         
+        // 2. Clear existing dummy options in the custom script
         resolutionDropdown.DeleteAllOptions();
 
         int currentResolutionIndex = 0;
@@ -39,22 +28,15 @@ public class ResolutionController : MonoBehaviour
             }
         }
 
+        // 3. Set the initial text and value
         resolutionDropdown.SelectOption(currentResolutionIndex);
 
+        // 4. Subscribe to the Action event in your AdvancedDropdown script
         resolutionDropdown.onChangedValue += HandleResolutionChange;
-    }
-
-    private void OnDestroy()
-    {
-        if (resolutionDropdown != null)
-            resolutionDropdown.onChangedValue -= HandleResolutionChange;
     }
 
     private void HandleResolutionChange(int index)
     {
-        if (resolutions == null || index < 0 || index >= resolutions.Length)
-            return;
-
         Resolution selectedRes = resolutions[index];
         Screen.SetResolution(selectedRes.width, selectedRes.height, Screen.fullScreen);
         Debug.Log($"Resolution changed to: {selectedRes.width}x{selectedRes.height}");

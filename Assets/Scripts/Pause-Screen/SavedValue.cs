@@ -35,12 +35,6 @@ public class SavedValue : MonoBehaviour
         currentLevel = level;
     }
 
-    private void OnDestroy()
-    {
-        if (instance == this)
-            instance = null;
-    }
-
     private void OnValidate()
     {
         currentLevel = level;
