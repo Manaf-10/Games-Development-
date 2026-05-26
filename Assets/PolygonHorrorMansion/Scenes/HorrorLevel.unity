@@ -241742,7 +241742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetScene: KingdomLevel
-  nextLevel: 3
+  nextLevel: 4
   teleportSound: {fileID: 8300000, guid: 610fdbe528943fe4e9c7f49666d2699c, type: 3}
   peterPortalClip: {fileID: 0}
   _interactionText: Press E to Enter Portal
